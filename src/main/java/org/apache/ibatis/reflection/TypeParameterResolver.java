@@ -15,14 +15,7 @@
  */
 package org.apache.ibatis.reflection;
 
-import java.lang.reflect.Array;
-import java.lang.reflect.Field;
-import java.lang.reflect.GenericArrayType;
-import java.lang.reflect.Method;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
-import java.lang.reflect.WildcardType;
+import java.lang.reflect.*;
 import java.util.Arrays;
 
 /**
@@ -32,7 +25,7 @@ public class TypeParameterResolver {
 
     /**
      * @return The field type as {@link Type}. If it has type parameters in the declaration,<br>
-     *         they will be resolved to the actual runtime {@link Type}s.
+     * they will be resolved to the actual runtime {@link Type}s.
      */
     public static Type resolveFieldType(Field field, Type srcType) {
         // 返回属性的类型，如果是泛型，则为这次的实际类型
@@ -44,7 +37,7 @@ public class TypeParameterResolver {
 
     /**
      * @return The return type of the method as {@link Type}. If it has type parameters in the declaration,<br>
-     *         they will be resolved to the actual runtime {@link Type}s.
+     * they will be resolved to the actual runtime {@link Type}s.
      */
     public static Type resolveReturnType(Method method, Type srcType) {
         Type returnType = method.getGenericReturnType();
@@ -59,7 +52,8 @@ public class TypeParameterResolver {
 
     /**
      * 解析方法入参
-     * @param method 目标方法
+     *
+     * @param method  目标方法
      * @param srcType 目标方法所属的类
      * @return 解析结果
      */
@@ -79,8 +73,9 @@ public class TypeParameterResolver {
 
     /**
      * 解析变量的实际类型
-     * @param type 变量的类型
-     * @param srcType 变量所属于的类
+     *
+     * @param type           变量的类型
+     * @param srcType        变量所属于的类
      * @param declaringClass 定义变量的类
      * @return 解析结果
      */
@@ -98,9 +93,10 @@ public class TypeParameterResolver {
 
     /**
      * 解析泛型列表的实际类型
+     *
      * @param genericArrayType 泛型列表变量类型
-     * @param srcType 变量所属于的类
-     * @param declaringClass 定义变量的类
+     * @param srcType          变量所属于的类
+     * @param declaringClass   定义变量的类
      * @return 解析结果
      */
     private static Type resolveGenericArrayType(GenericArrayType genericArrayType, Type srcType, Class<?> declaringClass) {
@@ -122,9 +118,10 @@ public class TypeParameterResolver {
 
     /**
      * 解析参数化类型的实际结果
+     *
      * @param parameterizedType 参数化类型的变量
-     * @param srcType 该变量所属于的类
-     * @param declaringClass 定义该变量的类
+     * @param srcType           该变量所属于的类
+     * @param declaringClass    定义该变量的类
      * @return 参数化类型的实际结果
      */
     private static ParameterizedType resolveParameterizedType(ParameterizedType parameterizedType, Type srcType, Class<?> declaringClass) {
@@ -172,8 +169,9 @@ public class TypeParameterResolver {
 
     /**
      * 解析泛型变量的实际结果
-     * @param typeVar 泛型变量
-     * @param srcType 该变量所属于的类
+     *
+     * @param typeVar        泛型变量
+     * @param srcType        该变量所属于的类
      * @param declaringClass 定义该变量的类
      * @return 泛型变量的实际结果
      */
