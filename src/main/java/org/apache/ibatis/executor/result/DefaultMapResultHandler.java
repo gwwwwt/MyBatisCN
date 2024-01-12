@@ -50,6 +50,7 @@ public class DefaultMapResultHandler<K, V> implements ResultHandler<V> {
 
     /**
      * 处理一个结果
+     *
      * @param context 一个结果
      */
     @Override

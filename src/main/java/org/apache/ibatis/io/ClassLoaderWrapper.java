@@ -177,7 +177,8 @@ public class ClassLoaderWrapper {
      */
     /**
      * 轮番使用各个加载器尝试加载一个类
-     * @param name 类名
+     *
+     * @param name        类名
      * @param classLoader 类加载列表
      * @return 加载出的类
      * @throws ClassNotFoundException
@@ -204,16 +205,17 @@ public class ClassLoaderWrapper {
 
     /**
      * 获取所有的类加载器
+     *
      * @param classLoader 传入的一种类加载器
      * @return 所有类加载器的列表
      */
     ClassLoader[] getClassLoaders(ClassLoader classLoader) {
         return new ClassLoader[]{
-                classLoader,
-                defaultClassLoader,
-                Thread.currentThread().getContextClassLoader(),
-                getClass().getClassLoader(),
-                systemClassLoader};
+            classLoader,
+            defaultClassLoader,
+            Thread.currentThread().getContextClassLoader(),
+            getClass().getClassLoader(),
+            systemClassLoader};
     }
 
 }

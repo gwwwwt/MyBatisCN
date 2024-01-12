@@ -27,9 +27,10 @@ public class PropertyParser {
     /**
      * The special property key that indicate whether enable a default value on placeholder.
      * <p>
-     *   The default value is {@code false} (indicate disable a default value on placeholder)
-     *   If you specify the {@code true}, you can specify key and default value on placeholder (e.g. {@code ${db.username:postgres}}).
+     * The default value is {@code false} (indicate disable a default value on placeholder)
+     * If you specify the {@code true}, you can specify key and default value on placeholder (e.g. {@code ${db.username:postgres}}).
      * </p>
+     *
      * @since 3.4.2
      */
     public static final String KEY_ENABLE_DEFAULT_VALUE = KEY_PREFIX + "enable-default-value";
@@ -37,8 +38,9 @@ public class PropertyParser {
     /**
      * The special property key that specify a separator for key and default value on placeholder.
      * <p>
-     *   The default separator is {@code ":"}.
+     * The default separator is {@code ":"}.
      * </p>
+     *
      * @since 3.4.2
      */
     public static final String KEY_DEFAULT_VALUE_SEPARATOR = KEY_PREFIX + "default-value-separator";
@@ -52,7 +54,8 @@ public class PropertyParser {
 
     /**
      * 进行字符串中属性变量的替换
-     * @param string 输入的字符串，可能包含属性变量
+     *
+     * @param string    输入的字符串，可能包含属性变量
      * @param variables 属性映射信息
      * @return 经过属性变量替换的字符串
      */
@@ -94,6 +97,7 @@ public class PropertyParser {
          * 由键寻值的过程中支持设置默认值
          * 如果启用默认值，则content形如"key:defaultValue"
          * 如果没有启用默认值，则content形如"key"
+         *
          * @param content 输入的字符串
          * @return 输出的字符串
          */

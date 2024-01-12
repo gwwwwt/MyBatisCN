@@ -17,9 +17,8 @@ package org.apache.ibatis.parsing;
 
 /**
  * @author Clinton Begin
- *
+ * <p>
  * 占位符处理器
- *
  */
 public class GenericTokenParser {
 
@@ -37,16 +36,14 @@ public class GenericTokenParser {
     }
 
     /**
-     *
      * @param text 输入：
      *             SELECT * FROM t_action
-     *          WHERE `id`=#{id}
-     *         ORDER BY `actionTime`
-     *
+     *             WHERE `id`=#{id}
+     *             ORDER BY `actionTime`
      * @return 输出：
-     *          SELECT * FROM t_action
-     *          WHERE `id`=?
-     *         ORDER BY `actionTime`
+     * SELECT * FROM t_action
+     * WHERE `id`=?
+     * ORDER BY `actionTime`
      */
     public String parse(String text) {
         if (text == null || text.isEmpty()) {

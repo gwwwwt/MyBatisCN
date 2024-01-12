@@ -15,9 +15,9 @@
  */
 package org.apache.ibatis.reflection.invoker;
 
-import java.lang.reflect.Field;
-
 import org.apache.ibatis.reflection.Reflector;
+
+import java.lang.reflect.Field;
 
 /**
  * @author Clinton Begin
@@ -32,8 +32,9 @@ public class GetFieldInvoker implements Invoker {
 
     /**
      * 执行方法
+     *
      * @param target 目标对象
-     * @param args 方法入参
+     * @param args   方法入参
      * @return 方法的返回结果
      * @throws IllegalAccessException
      */

@@ -33,6 +33,7 @@ public class InterceptorChain {
 
     /**
      * 向所有的拦截器链提供目标对象，由拦截器链给出替换目标对象的对象
+     *
      * @param target 目标对象，是MyBatis中支持拦截的几个类（ParameterHandler、ResultSetHandler、StatementHandler、Executor）的实例
      * @return 用来替换目标对象的对象
      */
@@ -46,6 +47,7 @@ public class InterceptorChain {
 
     /**
      * 向拦截器链增加一个拦截器
+     *
      * @param interceptor 要增加的拦截器
      */
     public void addInterceptor(Interceptor interceptor) {
@@ -54,6 +56,7 @@ public class InterceptorChain {
 
     /**
      * 获取拦截器列表
+     *
      * @return 拦截器列表
      */
     public List<Interceptor> getInterceptors() {

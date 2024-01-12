@@ -15,15 +15,6 @@
  */
 package org.apache.ibatis.session.defaults;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.ibatis.binding.BindingException;
 import org.apache.ibatis.cursor.Cursor;
 import org.apache.ibatis.exceptions.ExceptionFactory;
@@ -38,6 +29,11 @@ import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.*;
 
 /**
  * The default implementation for {@link SqlSession}.
@@ -146,10 +142,11 @@ public class DefaultSqlSession implements SqlSession {
 
     /**
      * 查询结果列表
-     * @param <E> 返回的列表元素的类型
+     *
+     * @param <E>       返回的列表元素的类型
      * @param statement SQL语句
      * @param parameter 参数对象
-     * @param rowBounds  翻页限制条件
+     * @param rowBounds 翻页限制条件
      * @return 结果对象列表
      */
     @Override

@@ -15,9 +15,6 @@
  */
 package org.apache.ibatis.executor;
 
-import java.sql.SQLException;
-import java.util.List;
-
 import org.apache.ibatis.cache.CacheKey;
 import org.apache.ibatis.cursor.Cursor;
 import org.apache.ibatis.mapping.BoundSql;
@@ -26,6 +23,9 @@ import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.transaction.Transaction;
+
+import java.sql.SQLException;
+import java.util.List;
 
 /**
  * @author Clinton Begin
@@ -43,11 +43,12 @@ public interface Executor {
 
     /**
      * 执行查询操作
-     * @param ms 映射语句对象
-     * @param parameter 参数对象
-     * @param rowBounds 翻页限制
+     *
+     * @param ms            映射语句对象
+     * @param parameter     参数对象
+     * @param rowBounds     翻页限制
      * @param resultHandler 结果处理器
-     * @param <E> 输出结果类型
+     * @param <E>           输出结果类型
      * @return 查询结果
      * @throws SQLException
      */

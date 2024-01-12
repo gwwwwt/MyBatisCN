@@ -15,11 +15,6 @@
  */
 package org.apache.ibatis.builder.xml;
 
-import java.io.InputStream;
-import java.io.Reader;
-import java.util.Properties;
-import javax.sql.DataSource;
-
 import org.apache.ibatis.builder.BaseBuilder;
 import org.apache.ibatis.builder.BuilderException;
 import org.apache.ibatis.datasource.DataSourceFactory;
@@ -38,13 +33,14 @@ import org.apache.ibatis.reflection.MetaClass;
 import org.apache.ibatis.reflection.ReflectorFactory;
 import org.apache.ibatis.reflection.factory.ObjectFactory;
 import org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory;
-import org.apache.ibatis.session.AutoMappingBehavior;
-import org.apache.ibatis.session.AutoMappingUnknownColumnBehavior;
-import org.apache.ibatis.session.Configuration;
-import org.apache.ibatis.session.ExecutorType;
-import org.apache.ibatis.session.LocalCacheScope;
+import org.apache.ibatis.session.*;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.type.JdbcType;
+
+import javax.sql.DataSource;
+import java.io.InputStream;
+import java.io.Reader;
+import java.util.Properties;
 
 /**
  * @author Clinton Begin
@@ -96,6 +92,7 @@ public class XMLConfigBuilder extends BaseBuilder {
 
     /**
      * 解析配置文件的入口方法
+     *
      * @return Configuration对象
      */
     public Configuration parse() {
@@ -111,6 +108,7 @@ public class XMLConfigBuilder extends BaseBuilder {
 
     /**
      * 从根节点configuration开始解析下层节点
+     *
      * @param root 根节点configuration节点
      */
     private void parseConfiguration(XNode root) {
@@ -197,6 +195,7 @@ public class XMLConfigBuilder extends BaseBuilder {
 
     /**
      * 解析<plugins>节点
+     *
      * @param parent <plugins>节点
      * @throws Exception
      */
@@ -306,8 +305,8 @@ public class XMLConfigBuilder extends BaseBuilder {
                     DataSourceFactory dsFactory = dataSourceElement(child.evalNode("dataSource"));
                     DataSource dataSource = dsFactory.getDataSource();
                     Environment.Builder environmentBuilder = new Environment.Builder(id)
-                            .transactionFactory(txFactory)
-                            .dataSource(dataSource);
+                        .transactionFactory(txFactory)
+                        .dataSource(dataSource);
                     configuration.setEnvironment(environmentBuilder.build());
                 }
             }
@@ -348,10 +347,10 @@ public class XMLConfigBuilder extends BaseBuilder {
      * 解析配置信息，获取数据源工厂
      * 被解析的配置信息示例如下：
      * <dataSource type="POOLED">
-     *   <property name="driver" value="{dataSource.driver}"/>
-     *   <property name="url" value="{dataSource.url}"/>
-     *   <property name="username" value="${dataSource.username}"/>
-     *   <property name="password" value="${dataSource.password}"/>
+     * <property name="driver" value="{dataSource.driver}"/>
+     * <property name="url" value="{dataSource.url}"/>
+     * <property name="username" value="${dataSource.username}"/>
+     * <property name="password" value="${dataSource.password}"/>
      * </dataSource>
      *
      * @param context 被解析的节点
@@ -403,9 +402,10 @@ public class XMLConfigBuilder extends BaseBuilder {
     /**
      * 解析mappers节点，例如：
      * <mappers>
-     *    <mapper resource="com/github/yeecode/mybatisDemo/UserDao.xml"/>
-     *    <package name="com.github.yeecode.mybatisDemo" />
+     * <mapper resource="com/github/yeecode/mybatisDemo/UserDao.xml"/>
+     * <package name="com.github.yeecode.mybatisDemo" />
      * </mappers>
+     *
      * @param parent mappers节点
      * @throws Exception
      */

@@ -15,14 +15,14 @@
  */
 package org.apache.ibatis.builder.xml;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Locale;
-
 import org.apache.ibatis.io.Resources;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Locale;
 
 /**
  * Offline entity resolver for the MyBatis DTDs.
@@ -53,9 +53,10 @@ public class XMLMapperEntityResolver implements EntityResolver {
     /**
      * 在一个XML文件的头部是这样的：
      * <!DOCTYPE configuration
-     *         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-     *         "http://mybatis.org/dtd/mybatis-3-config.dtd">
-     *  那么上述例子中，
+     * PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+     * "http://mybatis.org/dtd/mybatis-3-config.dtd">
+     * 那么上述例子中，
+     *
      * @param publicId 为-//mybatis.org//DTD Config 3.0//EN
      * @param systemId 为http://mybatis.org/dtd/mybatis-3-config.dtd
      * @return 对应DTD文档的输入流

@@ -31,8 +31,9 @@ public final class PropertyCopier {
 
     /**
      * 完成对象的输出拷贝
-     * @param type 对象的类型
-     * @param sourceBean 提供属性值的对象
+     *
+     * @param type            对象的类型
+     * @param sourceBean      提供属性值的对象
      * @param destinationBean 要被写入新属性值的对象
      */
     public static void copyBeanProperties(Class<?> type, Object sourceBean, Object destinationBean) {

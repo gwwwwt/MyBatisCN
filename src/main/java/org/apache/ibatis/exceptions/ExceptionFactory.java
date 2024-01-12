@@ -31,8 +31,9 @@ public class ExceptionFactory {
 
     /**
      * 生成一个RuntimeException异常
+     *
      * @param message 异常信息
-     * @param e 异常
+     * @param e       异常
      * @return 新的RuntimeException异常
      */
     public static RuntimeException wrapException(String message, Exception e) {

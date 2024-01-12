@@ -25,7 +25,7 @@ import java.util.Iterator;
 /**
  * 假设传入的为student[sId].name
  * 则各个属性得到以下结果
- *
+ * <p>
  * 该属性标记器只能处理一级，即点后面的都作为children
  */
 public class PropertyTokenizer implements Iterator<PropertyTokenizer> {

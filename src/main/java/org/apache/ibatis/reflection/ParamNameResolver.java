@@ -44,7 +44,7 @@ public class ParamNameResolver {
      * <li>aMethod(int a, int b) -&gt; {{0, "0"}, {1, "1"}}</li>
      * <li>aMethod(int a, RowBounds rb, int b) -&gt; {{0, "0"}, {2, "1"}}</li>
      * </ul>
-     *
+     * <p>
      * 凡是加了@Param注解的会单独处理，特殊参数也会单独处理
      */
 
@@ -55,6 +55,7 @@ public class ParamNameResolver {
 
     /**
      * 参数名解析器的构造方法
+     *
      * @param config 配置信息
      * @param method 要被分析的方法
      */
@@ -122,13 +123,12 @@ public class ParamNameResolver {
      * In addition to the default names, this method also adds the generic names (param1, param2,
      * ...).
      * </p>
-     *
+     * <p>
      * 将被解析的方法中的参数名称列表与传入的`Object[] args`进行对应，返回对应关系。
-     *
-     *
+     * <p>
+     * <p>
      * 如果只有一个参数，直接返回参数
      * 如果有多个参数，则进行与之前解析出的参数名称进行对应，返回对应关系
-     *
      */
     public Object getNamedParams(Object[] args) {
         final int paramCount = names.size();

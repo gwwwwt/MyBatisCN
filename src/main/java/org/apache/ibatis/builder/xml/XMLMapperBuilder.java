@@ -15,32 +15,11 @@
  */
 package org.apache.ibatis.builder.xml;
 
-import java.io.InputStream;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-
-import org.apache.ibatis.builder.BaseBuilder;
-import org.apache.ibatis.builder.BuilderException;
-import org.apache.ibatis.builder.CacheRefResolver;
-import org.apache.ibatis.builder.IncompleteElementException;
-import org.apache.ibatis.builder.MapperBuilderAssistant;
-import org.apache.ibatis.builder.ResultMapResolver;
+import org.apache.ibatis.builder.*;
 import org.apache.ibatis.cache.Cache;
 import org.apache.ibatis.executor.ErrorContext;
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.mapping.Discriminator;
-import org.apache.ibatis.mapping.ParameterMapping;
-import org.apache.ibatis.mapping.ParameterMode;
-import org.apache.ibatis.mapping.ResultFlag;
-import org.apache.ibatis.mapping.ResultMap;
-import org.apache.ibatis.mapping.ResultMapping;
+import org.apache.ibatis.mapping.*;
 import org.apache.ibatis.parsing.XNode;
 import org.apache.ibatis.parsing.XPathParser;
 import org.apache.ibatis.reflection.MetaClass;
@@ -48,24 +27,27 @@ import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.TypeHandler;
 
+import java.io.InputStream;
+import java.io.Reader;
+import java.util.*;
+
 /**
  * @author Clinton Begin
  * @author Kazuki Shimizu
- *
+ * <p>
  * 这是用来解析Mapper文件的建造者
  * <mappers>
- *    <mapper resource="com/example/demo/UserMapper.xml"/>
+ * <mapper resource="com/example/demo/UserMapper.xml"/>
  * </mappers>
- *     中UserMapper.xml就是由他建造到configuration的mapper中的
- *
- *     即，它处理：
+ * 中UserMapper.xml就是由他建造到configuration的mapper中的
+ * <p>
+ * 即，它处理：
  * <mapper namespace="com.example.demo.UserDao">
- *   <cache eviction="FIFO" flushInterval="60000"/>
- *   <select id="selectUser" resultType="com.example.demo.UserBean">    -- 对应xxxx，由XMLMapperBuilder解析
- *       select * from `user` where id = #{id}
- *   </select>
+ * <cache eviction="FIFO" flushInterval="60000"/>
+ * <select id="selectUser" resultType="com.example.demo.UserBean">    -- 对应xxxx，由XMLMapperBuilder解析
+ * select * from `user` where id = #{id}
+ * </select>
  * </mapper>
- *
  */
 public class XMLMapperBuilder extends BaseBuilder {
 
@@ -130,6 +112,7 @@ public class XMLMapperBuilder extends BaseBuilder {
 
     /**
      * 解析Mapper文件的下层节点
+     *
      * @param context Mapper文件的根节点
      */
     private void configurationElement(XNode context) {
