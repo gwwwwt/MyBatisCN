@@ -26,9 +26,9 @@ import java.util.Map;
 public class ForEachSqlNode implements SqlNode {
     public static final String ITEM_PREFIX = "__frch_";
 
-    // 表达式求值器
+    // 表达式求值器，用于判断循环的中止条件
     private final ExpressionEvaluator evaluator;
-    // collection属性的值
+    // collection属性的值，迭代的集合表达式
     private final String collectionExpression;
     // 节点内的内容
     private final SqlNode contents;
@@ -38,6 +38,7 @@ public class ForEachSqlNode implements SqlNode {
     private final String close;
     // separator属性的值，即元素分隔符
     private final String separator;
+    // index是当前迭代的次数，item是本次迭代的元素。若迭代集合是Map，则index为键，item为值
     // item属性的值，即元素
     private final String item;
     // index属性的值，即元素的编号
@@ -145,9 +146,9 @@ public class ForEachSqlNode implements SqlNode {
 
     private static class FilteredDynamicContext extends DynamicContext {
         private final DynamicContext delegate;
-        private final int index;
-        private final String itemIndex;
-        private final String item;
+        private final int index; // 当前集合项在集合中的索引位置
+        private final String itemIndex; // 对应集合项的index
+        private final String item;     // 对应集合项的item
 
         public FilteredDynamicContext(Configuration configuration, DynamicContext delegate, String itemIndex, String item, int i) {
             super(configuration, null);
